@@ -12,27 +12,18 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+     <rg.slf4j.version>1.7.25</rg.slf4j.version>
+     <application.version>${project.version}</application.version>
+
   </properties>
 
   <profiles>
-  <profile>
+     <profile>
        <id>test</id>
        <build>
          <plugins>
-           <plugin>
-             <groupId> org.apache.maven.plugins.maven-assembly-plugin</groupId>
-             <artifactId>maven-assembly-plugin</artifactId>
-             <version>3.1.0</version>
-           </plugin>
-           <plugin>
-             <artifactId>maven-compiler-plugin</artifactId>
-             <version>3.3</version>
-             <configuration>
-               <debug>false</debug>
-               <optimize>true</optimize>
-             </configuration>
-           </plugin>
-           <plugin>
+            <plugin>
              <groupId>org.apache.maven.plugins</groupId>
              <artifactId>maven-jar-plugin</artifactId>
              <version>3.0.2</version>
@@ -45,83 +36,114 @@
                </archive>
              </configuration>
            </plugin>
+           <plugin>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>3.3</version>
+             <configuration>
+               <debug>false</debug>
+               <optimize>true</optimize>
+             </configuration>
+           </plugin>
+           <plugin>
+             <groupId> org.apache.maven.plugins.maven-assembly-plugin</groupId>
+             <artifactId>maven-assembly-plugin</artifactId>
+             <version>3.1.0</version>
+           </plugin>
          </plugins>
        </build>
-   </profile>
-</profiles>
+     </profile>
+   </profiles>
+   <build>
+        <resources>
+         <resource>
+             <directory>src/main/resources</directory>
+             <filtering>true</filtering>
+         </resource>
+        </resources>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.0.2</version>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>Main</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+           </plugin>
 
-<build>
-	<!-- chemin des ressources txt ? -->
-	<resources>
-		<resource>
-			<directory>src/main/resources</directory>
-			<filtering>true</filtering>
-		</resource>
-	</resources>		
-</build>
+        <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <version>2.2.4</version>
+            <executions>
+                <execution>
+                    <id>get-the-git-infos</id>
+                    <goals>
+                        <goal>revision</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>validate-the-git-infos</id>
+                    <goals>
+                        <goal>validateRevision</goal>
+                    </goals>
+                    <phase>package</phase>
+                </execution>
+            </executions>
+     </plugin>
 
-<plugin>
-	<groupId>pl.project13.maven</groupId>
-	<artifactId>git-commit-id-plugin</artifactId>
-	<version>2.2.4</version>
-	<executions>
-	  <execution>
-	      <id>get-the-git-infos</id>
-	      <goals>
-	          <goal>revision</goal>
-	      </goals>
-	  </execution>
-	  <execution>
-	      <id>validate-the-git-infos</id>
-	      <goals>
-	          <goal>validateRevision</goal>
-	      </goals>
-	      <phase>prepare-package</phase>
-	  </execution>
-	</executions>
+    </plugins>
 
-	<configuration>
-	  <generateGitPropertiesFile>true</generateGitPropertiesFile>
-	  <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-	</configuration>
-</plugin>
+  </build>
 
+  <dependencies>
 
-<dependencies>
-  			<!-- libraires perso -->	
-        <dependency>
-      		<groupId>heg-lib-outils</groupId>
-      		<artifactId>outils</artifactId>
-      		<version>1.0.0</version>
- 		  </dependency>
-        <dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>
+
+    <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.2</version>
             <scope>test</scope>
-        </dependency>    
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.9.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${rg.slf4j.version}</version>
-        </dependency>
-        <!-- version runtime -->
-        <dependency>	
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${rg.slf4j.version}</version>
-            <scope>runtime</scope>
-        </dependency>
+    </dependency>
+    <!--
+    <dependency>
+            <groupId>lib.outils</groupId>
+            <artifactId>outils</artifactId>
+            <version>1.0.0</version>
+    </dependency>
+	-->
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>1.10.19</version>
+    </dependency>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <!-- use 2.9.0 for Java 7 projects -->
+        <version>3.9.0</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.5</version>
+        <type>jar</type>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.8.0-beta2</version>
+        <scope>runtime</scope>
+    </dependency>
   </dependencies>
 </project>
