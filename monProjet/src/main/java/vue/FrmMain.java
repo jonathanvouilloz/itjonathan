@@ -1,32 +1,32 @@
 package vue;
 
-import domaine.Pays;
-import domaine.Sport;
-import metier.ModelePays;
-import metier.ModeleSports;
-import metier.ModeleAthletes;
+import metier.ListePays;
+import metier.ListeSports;
+import metier.ListeAthletes;
+import java.util.Observer;
 
 public class FrmMain extends java.awt.Frame {
-    
-    private ModelePays modelePays = new ModelePays();
-    private ModeleSports modeleSports = new ModeleSports();
-    private ModeleAthletes modeleAthletes = new ModeleAthletes();
-    
+
+    private ListePays listePays;
+    private ListeSports listeSports;
+    private ListeAthletes listeAthletes;
+
     public FrmMain() {
         initComponents();
-        initObservers();
-        modelePays.loadData();
-        modeleSports.loadData();
+        chargerDonnees();
+    }
+
+    private void chargerDonnees() {
+        listePays = new ListePays(new ObsPourLstPays(lstPays));
+        listeSports = new ListeSports(new ObsPourLstSports(lstSports));
+        listeAthletes = new ListeAthletes(new ObsPourLstAthletes(lstAthletes));
+        listeAthletes.addObserver(new ObsPourDetail(tfNo, tfPrenom, tfNom, tfPays, tfSport));
+        
+        Observer obs = new ObsPourLoadAthletes(listeAthletes, listePays, listeSports);
+        listePays.addObserver(obs);
+        listeSports.addObserver(obs);
     }
     
-     private void initObservers () {
-        modelePays.addObserver(new LstPaysObserver(lstPays));
-        modeleSports.addObserver(new LstSportsObserver(lstSports));
-        modeleAthletes.addObserver(new LstAthletesObserver(lstAthletes));
-        modeleAthletes.addObserver(new DetailsAthletesObserver(tfNo, tfNom, tfPrenom, tfPays, tfSport));
-        
-    }
-     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -138,27 +138,17 @@ public class FrmMain extends java.awt.Frame {
     }//GEN-LAST:event_formWindowClosed
 
     private void lstPaysItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstPaysItemStateChanged
-        modelePays.setPos(lstPays.getSelectedIndex());
-        slctPaysSport();
+        listePays.setPos(lstPays.getSelectedIndex());
     }//GEN-LAST:event_lstPaysItemStateChanged
 
     private void lstSportsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstSportsItemStateChanged
-        modeleSports.setPos(lstSports.getSelectedIndex());
-        slctPaysSport();
+        listeSports.setPos(lstSports.getSelectedIndex());
     }//GEN-LAST:event_lstSportsItemStateChanged
 
     private void lstAthletesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstAthletesItemStateChanged
-        modeleAthletes.setPos(lstAthletes.getSelectedIndex());
+        listeAthletes.setPos(lstAthletes.getSelectedIndex());
     }//GEN-LAST:event_lstAthletesItemStateChanged
 
-    public void slctPaysSport() {
-        
-        // si les deux liste on une ligne de selectioné
-        if(lstPays.getSelectedIndex() > -1 && lstSports.getSelectedIndex() > -1) {
-          modeleAthletes.loadData((Pays)modelePays.get(), (Sport)modeleSports.get());
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.List lstAthletes;
     private java.awt.List lstPays;

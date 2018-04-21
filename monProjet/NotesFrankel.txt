@@ -1,4 +1,0 @@
-Problème pour l'install des libraires perso
-L'installation s'est faite sans problème mais au moment de l'install ->
-error reading C:\Users\admin\.m2\repository\lib\outils\outils\1.0.0\outils-1.0.0.jar; error in opening zip file
-Mon fichier a bien été install avec -Dpackaging=jar, pas compris
