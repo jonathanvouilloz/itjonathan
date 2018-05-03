@@ -9,6 +9,9 @@ public class PaysDao {
     
     private static final String FICHIER_PAYS = "Pays.txt";
 
+    public PaysDao(FileReader reader) {
+    }
+
     public static ArrayList getListePays() {
         String[] tabPays = FileStr.read(FICHIER_PAYS);
         ArrayList aLst = new ArrayList();
