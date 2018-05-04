@@ -7,9 +7,14 @@ import domaine.Sport;
 
 public class SportDao {
     
+    private final FileReader reader;
     private static final String FICHIER_SPORTS = "Sports.txt";
-
-    public static ArrayList getListeSports() {
+    
+    public SportDao(FileReader reader){
+        this.reader = reader;
+    }
+   
+    public ArrayList getListeSports() {
         String[] tabSports = FileStr.read(FICHIER_SPORTS);
         ArrayList aLst = new ArrayList();
         for (int i=0; i<tabSports.length; i++) {

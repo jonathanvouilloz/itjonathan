@@ -1,14 +1,18 @@
 package metier;
 
+import dao.FileReader;
 import dao.PaysDao;
 import domaine.Pays;
 import java.util.Observer;
 
 public class ListePays extends ListeObjects {
-
+    
+ 
     public ListePays(Observer observer) {
         super(observer);
-        aListe = PaysDao.getListePays();
+        FileReader r = new FileReader();
+        PaysDao paysD = new PaysDao(r);
+        aListe = paysD.getListePays();
         setChanged(); notifyObservers(new Action(Action.LOAD));
    }
 

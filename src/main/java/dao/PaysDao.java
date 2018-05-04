@@ -7,11 +7,12 @@ import domaine.Pays;
 
 public class PaysDao {
     
+    private FileReader reader;
     private static final String FICHIER_PAYS = "Pays.txt";
 
-    public PaysDao(FileReader reader) {
-    }
-
+    public PaysDao(FileReader reader){
+        this.reader = reader;
+    } 
     public static ArrayList getListePays() {
         String[] tabPays = FileStr.read(FICHIER_PAYS);
         ArrayList aLst = new ArrayList();
