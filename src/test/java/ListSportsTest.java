@@ -28,10 +28,11 @@ public class ListSportsTest {
         }*/
 
 
+       /*
     @Test
     public void shouldReturnNullIfPosInvalid() {
         Sport sport = listeSports.getSport(-100);
         assertThat(sport).isNull();
-    }
+    }*/
 
 }

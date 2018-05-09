@@ -17,5 +17,8 @@ public class ListeSports extends ListeObjects {
     }       
     
     public Sport getSport() { return (Sport)super.get(); }
-    public Sport getSport(int pos) { return (Sport)super.get(pos); }
+    public Sport getSport(int pos) {
+        if (pos < 0 || pos >= aListe.size()) { return null; }
+        return (Sport)super.get(pos);
+    }
 }

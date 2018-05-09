@@ -17,5 +17,10 @@ public class ListePays extends ListeObjects {
    }
 
     public Pays getPays() { return (Pays)super.get(); }
-    public Pays getPays(int pos) { return (Pays)super.get(pos); }
+    public Pays getPays(int pos) {
+        if (pos < 0 || pos >= aListe.size()) {
+            return null;
+        }
+        return (Pays)super.get(pos);
+    }
 }

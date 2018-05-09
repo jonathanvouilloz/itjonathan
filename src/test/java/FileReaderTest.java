@@ -17,8 +17,8 @@ public class FileReaderTest {
         String[] file = reader.readAthletes();
         String[] file2 = reader.readPays();
         String[] file3 = reader.readSports();
-        assertThat(file).isNull();
-        assertThat(file2).isNull();
-        assertThat(file3).isNull();
+        assertThat(file).isNotEmpty();
+        assertThat(file2).isNotEmpty();
+        assertThat(file3).isNotEmpty();
     }
 }

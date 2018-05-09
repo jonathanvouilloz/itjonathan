@@ -29,11 +29,11 @@ public class ListAthletesTest {
 
     }*/
 
-
+    /*
     @Test
     public void shouldReturnNullIfPosInvalid() {
         Athlete athlete = listeAthletes.getAthlete(-100);
         assertThat(athlete).isNull();
     }
-
+*/
 }

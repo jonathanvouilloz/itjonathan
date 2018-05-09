@@ -23,5 +23,7 @@ public class ListeAthletes extends ListeObjects {
    }
 
     public Athlete getAthlete() { return (Athlete)super.get(); }
-    public Athlete getAthlete(int pos) { return (Athlete)super.get(pos); }
+    public Athlete getAthlete(int pos) {
+        if (pos < 0 || pos >= aListe.size()) { return null; }
+        return (Athlete)super.get(pos); }
 }
