@@ -6,13 +6,13 @@ import domaine.Pays;
 import java.util.Observer;
 
 public class ListePays extends ListeObjects {
-    
- 
+
+
+    private PaysDao pays = new PaysDao(new FileReader());
+
     public ListePays(Observer observer) {
         super(observer);
-        FileReader r = new FileReader();
-        PaysDao paysD = new PaysDao(r);
-        aListe = paysD.getListePays();
+        aListe = pays.getListePays();
         setChanged(); notifyObservers(new Action(Action.LOAD));
    }
 
