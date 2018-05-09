@@ -119,6 +119,11 @@
             <artifactId>plexus-utils</artifactId>
             <version>3.0.24</version>
         </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.1</version>
+        </dependency>
     </dependencies>
 
     
