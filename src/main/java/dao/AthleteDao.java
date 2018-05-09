@@ -17,7 +17,7 @@ public class AthleteDao {
         this.reader = reader;
     }
 
-    public List getListeAthletes(Pays pays, Sport sport) {
+    public ArrayList getListeAthletes(Pays pays, Sport sport) {
         String[] tabAthletes = reader.readAthletes();
         ArrayList aLst = new ArrayList();
         for (int i=0; i<tabAthletes.length; i++) {

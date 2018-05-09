@@ -1,15 +1,13 @@
 import dao.FileReader;
 import java.util.List;
 import dao.PaysDao;
-import domaine.Pays;
 import static org.mockito.Mockito.*;
-import static org.mockito.Matchers.*;
-import static org.testng.Assert.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+
+import domaine.Pays;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 
 public class TestPaysDao {
@@ -24,23 +22,53 @@ public class TestPaysDao {
     }
 
     @Test
-    public void shouldReturnEmptyListWhenArrayEmpty()
+    public void shouldReturnEmptyListIfArrayIsEmpty() {
+        when(reader.readPays()).thenReturn(new String[] {});
+        List paysL = dao.getListePays();
+        assertThat(paysL).isEmpty();
+    }
+
+    @Test
+    public void shouldReturnSingleItemIfArrayGotOneItem()
     {
-        when(reader.readPays()).thenReturn(new String[]{});
-        List<Pays> pays = dao.getListePays();
-        assertThat(pays, empty());
+        when(reader.readPays()).thenReturn(new String[] {"53;DEN;Danemark"});
+        List pays = dao.getListePays();
+        assertThat(pays).isNotEmpty();
+        assertThat(pays).hasSize(1);
+        assertThat(pays).contains(new Pays(53, "DEN", "Danemark"));
     }
 
 
     @Test
-    public void shouldReturnSingleListSportArrayHasOnline()
+    public void shouldReturnMultipleIfArrayGotMoreThanOneItems()
     {
-        /*
-        when(reader.readPays()).thenReturn(new String[]{"1'europe;allemagne"});
-        List<Pays> pays = dao.getListePays();
-        assertThat(pays,is(not(empty())));
-        assertThat(pays,hasSize(1));
-        assertThat(pays,contains(new Pays(1,"europe","allemagne")));
-        */
+        when(reader.readPays()).thenReturn(new String[] {
+                "12;AUT;Autriche",
+                "34;CAN;Canada",
+                "53;DEN;Danemark",
+                "66;FRA;France"
+        });
+        List pays = dao.getListePays();
+        assertThat(pays).isNotEmpty();
+        assertThat(pays).hasSize(4);
     }
+
+
+    @Test
+    public void souldReturnDuplicateIfArrayGotDuplicate()
+    {
+        when(reader.readPays()).thenReturn(new String[] {
+                "12;AUT;Autriche",
+                "12;AUT;Autriche",
+                "53;DEN;Danemark"
+        });
+        List pays = dao.getListePays();
+        assertThat(pays).isNotEmpty();
+        assertThat(pays).contains(
+                new Pays(12, "AUT", "Autriche"),
+                new Pays(12, "AUT", "Autriche"),
+                new Pays(53, "DEN", "Danemark")
+        );
+    }
+
 }

@@ -15,7 +15,7 @@ public class PaysDao {
         this.reader = reader;
     }
 
-    public List getListePays() {
+    public ArrayList getListePays() {
         String[] tabPays = reader.readPays();
         ArrayList aLst = new ArrayList();
         for (int i=0; i<tabPays.length; i++) { 

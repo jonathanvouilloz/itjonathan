@@ -1,19 +1,24 @@
 package metier;
 
 import dao.AthleteDao;
+import dao.FileReader;
 import domaine.Athlete;
 import domaine.Pays;
 import domaine.Sport;
 import java.util.Observer;
 
 public class ListeAthletes extends ListeObjects {
+    private Pays pays;
+    private Sport sport;
 
     public ListeAthletes(Observer observer) {
         super(observer);
    }
 
+    private AthleteDao athleteDao = new AthleteDao(new FileReader());
+
     public void charger(Pays p, Sport s) {
-        aListe = AthleteDao.getListeAthletes(p, s);
+        super.aListe = athleteDao.getListeAthletes(pays, sport);
         setChanged(); notifyObservers(new Action(Action.LOAD));
    }
 
