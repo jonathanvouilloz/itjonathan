@@ -2,6 +2,7 @@ import dao.AthleteDao;
 import domaine.Athlete;
 import domaine.Pays;
 import dao.PaysDao;
+import domaine.Sport;
 import metier.ListeAthletes;
 import org.testng.annotations.BeforeTest;
 
@@ -9,31 +10,40 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ListAthletesTest {
     private ListeAthletes listeAthletes;
     private AthleteDao dao;
+    private Pays pays;
+    private Sport sport;
 
     @BeforeTest
     protected void setUp() {
-        /*
-        Pour faire ces test, je dois modifier les observer niveau parametres -> donc je dois changer dans le FrmMain, ça fait beaucoup, le temps c'est de l'argent
-        *
-        listPays = new ListePays();
-        dao = mock(PaysDao.class);*/
+
+        listeAthletes = new ListeAthletes();
+        dao = mock(AthleteDao.class);
+        pays = new Pays(123);
+        sport = new Sport(23);
     }
 
-    /*
+
     public void shouldNotFillListIfListAthletesEmpty() {
+        when(dao.getListeAthletes(pays,sport)).thenReturn(new ArrayList());
+        listeAthletes.chargerDonnee(pays,sport);
+        List athletesList = listeAthletes.getList();
+        assertThat(athletesList).isNotEmpty();
+    }
 
-    }*/
 
-    /*
     @Test
     public void shouldReturnNullIfPosInvalid() {
         Athlete athlete = listeAthletes.getAthlete(-100);
         assertThat(athlete).isNull();
     }
-*/
+
 }

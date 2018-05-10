@@ -5,6 +5,8 @@ import dao.FileReader;
 import domaine.Athlete;
 import domaine.Pays;
 import domaine.Sport;
+
+import java.util.List;
 import java.util.Observer;
 
 public class ListeAthletes extends ListeObjects {
@@ -21,4 +23,8 @@ public class ListeAthletes extends ListeObjects {
     public Athlete getAthlete(int pos) {
         if (pos < 0 || pos >= aListe.size()) { return null; }
         return (Athlete)super.get(pos); }
+
+    public List getList(){
+        return aListe;
+    }
 }

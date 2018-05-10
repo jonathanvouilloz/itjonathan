@@ -7,7 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ListPaysTest {
     private ListePays listPays;
@@ -15,24 +19,25 @@ public class ListPaysTest {
 
     @BeforeTest
     protected void setUp() {
-        /*
-        Pour faire ces test, je dois modifier les observer niveau parametres -> donc je dois changer dans le FrmMain, ça fait beaucoup, le temps c'est de l'argent
-        *
+
         listPays = new ListePays();
-        dao = mock(PaysDao.class);*/
+        dao = mock(PaysDao.class);
     }
 
-    /*
-    public void shouldNotFillListIfListPaysEmpty() {
 
-    }*/
+    public void shouldNotFillListIfListPaysEmpty() {
+        when(dao.getListePays()).thenReturn(new ArrayList());
+        listPays.chargerDonnee();
+        List paysList = listPays.getList();
+        assertThat(paysList).isNotEmpty();
+    }
 
     //Ce qui fait que je ne peux pas tester ça non plus car lstPays pas initalisé
-    /*
+
     @Test
     public void shouldReturnNullIfPosInvalid() {
         Pays pays = listPays.getPays(-100);
         assertThat(pays).isNull();
-    }*/
+    }
 
 }

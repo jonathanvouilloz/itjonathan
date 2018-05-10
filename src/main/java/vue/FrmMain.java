@@ -17,9 +17,9 @@ public class FrmMain extends java.awt.Frame {
     }
 
     private void chargerDonnees() {
-        listePays = new ListePays(new ObsPourLstPays(lstPays));
-        listeSports.addObserver(new ObsPourLstAthletes(lstSports));
-        listeAthletes = new ListeAthletes(new ObsPourLstAthletes(lstAthletes));
+        listePays.addObserver(new ObsPourLstPays(lstPays));
+        listeSports.addObserver(new ObsPourLstSports(lstSports));
+        listeAthletes.addObserver(new ObsPourLstAthletes(lstAthletes));
         listeAthletes.addObserver(new ObsPourDetail(tfNo, tfPrenom, tfNom, tfPays, tfSport));
         
         Observer obs = new ObsPourLoadAthletes(listeAthletes, listePays, listeSports);

@@ -16,7 +16,7 @@ public class ObsPourLoadAthletes implements Observer {
 
     public void update (Observable o, Object arg) {
         switch (((Action)arg).getAction()) {
-            case Action.SEL: if (listePays.getPays() != null && listeSports.getSport() != null) { listeAthletes.charger(listePays.getPays(), listeSports.getSport()); } break;
+            case Action.SEL: if (listePays.getPays() != null && listeSports.getSport() != null) { listeAthletes.chargerDonnee(listePays.getPays(), listeSports.getSport()); } break;
         }
     }
 }

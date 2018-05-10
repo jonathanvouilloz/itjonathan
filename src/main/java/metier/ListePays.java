@@ -3,6 +3,8 @@ package metier;
 import dao.FileReader;
 import dao.PaysDao;
 import domaine.Pays;
+
+import java.util.List;
 import java.util.Observer;
 
 public class ListePays extends ListeObjects {
@@ -21,5 +23,9 @@ public class ListePays extends ListeObjects {
             return null;
         }
         return (Pays)super.get(pos);
+    }
+
+    public List getList(){
+        return aListe;
     }
 }

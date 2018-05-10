@@ -9,7 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ListSportsTest {
     private ListeSports listeSports;
@@ -17,22 +21,23 @@ public class ListSportsTest {
 
     @BeforeTest
     protected void setUp() {
-        /*
-        Pour faire ces test, je dois modifier les observer niveau parametres -> donc je dois changer dans le FrmMain, ça fait beaucoup, le temps c'est de l'argent
-        *
-       */
+        listeSports = new ListeSports();
+        dao = mock(SportDao.class);
     }
-       /*
+
         public void shouldNotFillListIfListSportEmpty() {
+            when(dao.getListeSports()).thenReturn(new ArrayList());
+            listeSports.chargerDonnee();
+            List sports = listeSports.getList();
+            assertThat(sports).isNotEmpty();
+        }
 
-        }*/
 
 
-       /*
     @Test
     public void shouldReturnNullIfPosInvalid() {
         Sport sport = listeSports.getSport(-100);
         assertThat(sport).isNull();
-    }*/
+    }
 
 }
