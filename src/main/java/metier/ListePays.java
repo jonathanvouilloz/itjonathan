@@ -8,13 +8,12 @@ import java.util.Observer;
 public class ListePays extends ListeObjects {
 
 
-    private PaysDao pays = new PaysDao(new FileReader());
-
-    public ListePays(Observer observer) {
-        super(observer);
-        aListe = pays.getListePays();
-        setChanged(); notifyObservers(new Action(Action.LOAD));
-   }
+    public void chargerDonnee(){
+        FileReader fileReader = new FileReader();
+        PaysDao paysDao = new PaysDao(fileReader);
+        aListe = paysDao.getListePays();
+        setChanged();notifyObservers(new Action(Action.LOAD));
+    }
 
     public Pays getPays() { return (Pays)super.get(); }
     public Pays getPays(int pos) {
