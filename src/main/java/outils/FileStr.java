@@ -37,21 +37,4 @@ public class FileStr
             localFileNotFoundException.printStackTrace();return null;
         } catch (IOException localIOException) { localIOException.printStackTrace(); } return null;
     }
-
-
-    public static void write(String paramString, String[] paramArrayOfString)
-    {
-        try
-        {
-            OutputStreamWriter localOutputStreamWriter = new OutputStreamWriter(new FileOutputStream(paramString), Charset.forName("ISO-8859-1"));
-            for (int i = 0; i < paramArrayOfString.length; i++) {
-                localOutputStreamWriter.write(paramArrayOfString[i], 0, paramArrayOfString[i].length());
-                localOutputStreamWriter.write("\r\n", 0, 2);
-            }
-            localOutputStreamWriter.close();
-        } catch (FileNotFoundException localFileNotFoundException) {
-            localFileNotFoundException.printStackTrace();
-        } catch (IOException localIOException) { localIOException.printStackTrace();
-        }
-    }
 }

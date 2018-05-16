@@ -14,7 +14,7 @@ abstract class ListeObjects extends Observable {
     protected ArrayList aListe;             /* Liste des Objects */
     public static final int NO_POS = -1;    /* Valeur de la position courante non définie */
     private int posCrt = NO_POS;            /* La position courante: initialement, pas de position courante */
-    
+
     protected ListeObjects() {}
     protected ListeObjects(Observer obs) { if (obs != null) { addObserver(obs); } }
 

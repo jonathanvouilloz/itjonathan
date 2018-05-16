@@ -10,6 +10,7 @@ import java.util.Observer;
 public class ListePays extends ListeObjects {
 
 
+
     public void chargerDonnee(){
         FileReader fileReader = new FileReader();
         PaysDao paysDao = new PaysDao(fileReader);

@@ -26,7 +26,8 @@ public class ObsPourLstSportsTest {
     @Test
     public void shouldListNotEmptyIfActionEqualLoad() {
         listeSports.chargerDonnee();
-        observer.update(listeSports, "LOAD");
+        action = new Action(1);
+        observer.update(listeSports, action);
         assertThat(list.getItemCount()).isGreaterThan(0);
     }
 

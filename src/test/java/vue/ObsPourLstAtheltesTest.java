@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.awt.List;
 
 import domaine.Pays;
+import domaine.Sport;
 import metier.Action;
 import metier.ListeAthletes;
 import metier.ListePays;
@@ -11,25 +12,29 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-public class ObsPourLstPaysTest {
+public class ObsPourLstAtheltesTest {
 
-    private ObsPourLstPays observer;
+    private ObsPourLstAthletes observer;
     private List list;
-    private ListePays listPays;
+    private ListeAthletes listeAthletes;
     private Action action;
+    private Pays pays;
+    private Sport sport;
 
     @BeforeTest
     protected void setUp() {
-        listPays = new ListePays();
+        listeAthletes = new ListeAthletes();
         list = new List();
-        observer = new ObsPourLstPays(list);
+        pays = new Pays(123);
+        sport = new Sport(23);
+        observer = new ObsPourLstAthletes(list);
     }
 
     @Test
     public void shouldListNotEmptyIfActionEqualLoad() {
-        listPays.chargerDonnee();
+        listeAthletes.chargerDonnee(pays,sport);
         action = new Action(1);
-        observer.update(listPays, action);
+        observer.update(listeAthletes, action);
         assertThat(list.getItemCount()).isGreaterThan(0);
     }
 
