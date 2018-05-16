@@ -12,8 +12,17 @@ public class ObsPourLstSports implements Observer {
     public ObsPourLstSports (List lst) { this.lst = lst; }
 
     public void update (Observable o, Object arg) {
+        ListeSports listeSports = (ListeSports)o;
         switch (((Action)arg).getAction()) {
-            case Action.LOAD: lst.removeAll(); for (int i=0; i < ((ListeSports)o).size(); i++) { lst.add(((ListeSports)o).getSport(i).toString()); } break;
+            case Action.LOAD: fillList(listeSports); break;
+        }
+    }
+
+    private void fillList(ListeSports listeSports){
+        int size = listeSports.size();
+        lst.removeAll();
+        for (int i = 0; i < size; i++) {
+            lst.add(listeSports.getSport(i).toString());
         }
     }
 }

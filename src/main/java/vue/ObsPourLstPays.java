@@ -12,8 +12,18 @@ public class ObsPourLstPays implements Observer {
     public ObsPourLstPays (List lst) { this.lst = lst; }
 
     public void update (Observable o, Object arg) {
+        ListePays listePays = (ListePays)o;
         switch (((Action)arg).getAction()) {
-            case Action.LOAD: lst.removeAll(); for (int i=0; i < ((ListePays)o).size(); i++) { lst.add(((ListePays)o).getPays(i).toString()); } break;
+            case Action.LOAD: fillList(listePays); break;
         }
     }
+
+    private void fillList(ListePays listePays){
+        int size = listePays.size();
+        lst.removeAll();
+        for (int i = 0; i < size; i++) {
+            lst.add(listePays.getPays(i).toString());
+        }
+    }
+
 }
