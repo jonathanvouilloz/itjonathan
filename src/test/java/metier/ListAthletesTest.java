@@ -48,4 +48,11 @@ public class ListAthletesTest {
         assertThat(athlete).isNull();
     }
 
+    @Test
+    public void shouldReturnNullIfPosToHigh() {
+        Athlete athlete = listeAthletes.getAthlete(Integer.MAX_VALUE);
+        assertThat(athlete).isNull();
+    }
+
+
 }

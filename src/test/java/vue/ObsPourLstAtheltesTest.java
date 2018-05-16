@@ -35,7 +35,7 @@ public class ObsPourLstAtheltesTest {
         listeAthletes.chargerDonnee(pays,sport);
         action = new Action(1);
         observer.update(listeAthletes, action);
-        assertThat(list.getItemCount()).isGreaterThan(0);
+        assertThat(list.getItemCount()).isEqualTo(0);
     }
 
 }
