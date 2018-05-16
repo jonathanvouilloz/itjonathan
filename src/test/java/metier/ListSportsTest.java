@@ -1,3 +1,5 @@
+package metier;
+
 import dao.SportDao;
 import domaine.Pays;
 import dao.PaysDao;

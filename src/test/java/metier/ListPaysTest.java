@@ -1,3 +1,5 @@
+package metier;
+
 import domaine.Pays;
 import dao.PaysDao;
 import metier.ListePays;
