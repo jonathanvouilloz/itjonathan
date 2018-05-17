@@ -97,6 +97,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <testPlugin>testng</testPlugin>
+                    <excludedClasses>
+                        jonathan.vouilloz.monProjet.ListeObjects
+                    </excludedClasses>
+                </configuration>
+            </plugin>
         </plugins>
 
 
