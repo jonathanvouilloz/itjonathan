@@ -1,3 +1,5 @@
+package metier;
+
 import dao.SportDao;
 import domaine.Pays;
 import dao.PaysDao;
@@ -24,7 +26,7 @@ public class ListSportsTest {
         listeSports = new ListeSports();
         dao = mock(SportDao.class);
     }
-
+        @Test
         public void shouldNotFillListIfListSportEmpty() {
             when(dao.getListeSports()).thenReturn(new ArrayList());
             listeSports.chargerDonnee();

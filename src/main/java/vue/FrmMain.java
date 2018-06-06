@@ -7,9 +7,9 @@ import java.util.Observer;
 
 public class FrmMain extends java.awt.Frame {
 
-    private ListePays listePays;
-    private ListeSports listeSports;
-    private ListeAthletes listeAthletes;
+    public ListePays listePays = new ListePays();
+    public ListeSports listeSports = new ListeSports();
+    public ListeAthletes listeAthletes = new ListeAthletes();
 
     public FrmMain() {
         initComponents();
@@ -21,10 +21,11 @@ public class FrmMain extends java.awt.Frame {
         listeSports.addObserver(new ObsPourLstSports(lstSports));
         listeAthletes.addObserver(new ObsPourLstAthletes(lstAthletes));
         listeAthletes.addObserver(new ObsPourDetail(tfNo, tfPrenom, tfNom, tfPays, tfSport));
-        
-        Observer obs = new ObsPourLoadAthletes(listeAthletes, listePays, listeSports);
-        listePays.addObserver(obs);
-        listeSports.addObserver(obs);
+
+        listePays.chargerDonnee();
+        listeSports.chargerDonnee();
+
+
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

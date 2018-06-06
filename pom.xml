@@ -97,6 +97,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <testPlugin>testng</testPlugin>
+                    <excludedClasses>
+                        jonathan.vouilloz.monProjet.ListeObjects
+                    </excludedClasses>
+                </configuration>
+            </plugin>
         </plugins>
 
 
@@ -148,6 +159,17 @@
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-parent</artifactId>
+            <version>1.4.0</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>2.0.1</version>
         </dependency>
     </dependencies>
 

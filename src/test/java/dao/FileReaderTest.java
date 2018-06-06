@@ -1,3 +1,5 @@
+package dao;
+
 import dao.FileReader;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

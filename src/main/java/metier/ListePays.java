@@ -10,6 +10,7 @@ import java.util.Observer;
 public class ListePays extends ListeObjects {
 
 
+
     public void chargerDonnee(){
         FileReader fileReader = new FileReader();
         PaysDao paysDao = new PaysDao(fileReader);
@@ -18,6 +19,7 @@ public class ListePays extends ListeObjects {
     }
 
     public Pays getPays() { return (Pays)super.get(); }
+
     public Pays getPays(int pos) {
         if (pos < 0 || pos >= aListe.size()) {
             return null;

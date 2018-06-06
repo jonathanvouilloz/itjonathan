@@ -1,3 +1,5 @@
+package metier;
+
 import domaine.Pays;
 import dao.PaysDao;
 import metier.ListePays;
@@ -24,7 +26,7 @@ public class ListPaysTest {
         dao = mock(PaysDao.class);
     }
 
-
+    @Test
     public void shouldNotFillListIfListPaysEmpty() {
         when(dao.getListePays()).thenReturn(new ArrayList());
         listPays.chargerDonnee();
@@ -39,5 +41,7 @@ public class ListPaysTest {
         Pays pays = listPays.getPays(-100);
         assertThat(pays).isNull();
     }
+
+
 
 }

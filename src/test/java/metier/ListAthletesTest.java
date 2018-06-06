@@ -1,3 +1,5 @@
+package metier;
+
 import dao.AthleteDao;
 import domaine.Athlete;
 import domaine.Pays;
@@ -31,12 +33,12 @@ public class ListAthletesTest {
         sport = new Sport(23);
     }
 
-
+    @Test
     public void shouldNotFillListIfListAthletesEmpty() {
         when(dao.getListeAthletes(pays,sport)).thenReturn(new ArrayList());
         listeAthletes.chargerDonnee(pays,sport);
         List athletesList = listeAthletes.getList();
-        assertThat(athletesList).isNotEmpty();
+        assertThat(athletesList).isEmpty();
     }
 
 
@@ -45,5 +47,12 @@ public class ListAthletesTest {
         Athlete athlete = listeAthletes.getAthlete(-100);
         assertThat(athlete).isNull();
     }
+
+    @Test
+    public void shouldReturnNullIfPosToHigh() {
+        Athlete athlete = listeAthletes.getAthlete(Integer.MAX_VALUE);
+        assertThat(athlete).isNull();
+    }
+
 
 }

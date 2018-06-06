@@ -1,3 +1,5 @@
+package metier;
+
 import metier.Action;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

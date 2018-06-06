@@ -1,6 +1,7 @@
 package domaine;
 
-import java.util.ArrayList;
+
+import javax.annotation.CheckForNull;
 
 public class Sport {
     private int no;
@@ -8,10 +9,34 @@ public class Sport {
     
     public Sport(int no, String nom) { this.no=no; this.nom=nom; }
     public Sport(int no) { this(no, ""); }
+<<<<<<< HEAD
 
     public boolean equals(Object obj) {
         return this.no == ((Sport)obj).no;
     }
     public String toString() { return nom; }
 
+=======
+
+    public String getNom() { return nom; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        else {
+            return this.no != ((Sport) obj).no;
+        }
+
+    }
+    public String toString() { return nom; }
+
+    public String concatenerString(String ... strings){
+        String conca ="";
+        for (int i=0;i<strings.length; i++){
+            conca += strings[i].toString();
+        }
+        return conca;
+    }
+>>>>>>> 019510ec7f1c527aa8eb428bc8a2680877014c2b
 }

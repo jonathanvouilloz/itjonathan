@@ -1,3 +1,5 @@
+package dao;
+
 import dao.FileReader;
 import java.util.List;
 import dao.PaysDao;
