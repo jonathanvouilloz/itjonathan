@@ -16,11 +16,10 @@ public class FileStr
 
     public FileStr() {}
 
-    public static String[] read(String paramString) throws IOException {
-        BufferedInputStream localBufferedInputStream = null;
+    public static String[] read(String paramString) {
         try
         {
-            localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+            BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
             StringBuffer localStringBuffer = new StringBuffer(localBufferedInputStream.available());
             int i = localBufferedInputStream.read();
             while (i != -1) {
@@ -31,14 +30,13 @@ public class FileStr
             int j = localStringTokenizer.countTokens();
             String[] arrayOfString = new String[j];
             for (int k = 0; k < j; k++) arrayOfString[k] = localStringTokenizer.nextToken();
+            localBufferedInputStream.close();
             return arrayOfString;
 
         } catch (FileNotFoundException localFileNotFoundException) {
             localFileNotFoundException.printStackTrace();return null;
         } catch (IOException localIOException) { localIOException.printStackTrace(); }
-        finally {
-            localBufferedInputStream.close();  // Multiple streams were opened. Only the last is closed.
-        }return null;
+       return null;
 
     }
 }
