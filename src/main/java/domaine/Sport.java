@@ -12,11 +12,14 @@ public class Sport {
 
     public String getNom() { return nom; }
 
-    @CheckForNull
+    @Override
     public boolean equals(Object obj) {
-        if (obj != null) {
-            return this.no == ((Sport) obj).no;
-        }return false;
+        if (obj == null)
+            return false;
+        else {
+            return this.no != ((Sport) obj).no;
+        }
+
     }
     public String toString() { return nom; }
 

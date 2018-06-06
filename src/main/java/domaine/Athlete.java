@@ -37,12 +37,13 @@ public class Athlete {
         return sport;
     }
 
-    @CheckForNull
+    @Override
     public boolean equals(Object obj) {
-        if (obj != null) {
-            return this.no == ((Athlete) obj).no;
+        if (obj == null)
+            return false;
+        else {
+            return this.no != ((Athlete) obj).no;
         }
-        return false;
     }
 
     public String toString() { return prenom+" "+nom; }

@@ -35,7 +35,8 @@ public class FileStr
 
         } catch (FileNotFoundException localFileNotFoundException) {
             localFileNotFoundException.printStackTrace();return null;
-        } catch (IOException localIOException) { localIOException.printStackTrace(); }
+        } catch (IOException localIOException) {
+            localIOException.printStackTrace(); }
        return null;
 
     }

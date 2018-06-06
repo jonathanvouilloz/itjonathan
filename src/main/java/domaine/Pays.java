@@ -16,12 +16,13 @@ public class Pays {
     public String getCode() { return code; }
     public String getNom() { return nom; }
 
-    @CheckForNull
+    @Override
     public boolean equals(Object obj) {
-        if (obj != null) {
-            return this.no == ((Pays) obj).no;
+        if (obj == null)
+            return false;
+        else {
+            return this.no != ((Pays) obj).no;
         }
-        return false;
     }
     public String toString() { return nom; }
 }
