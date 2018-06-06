@@ -17,6 +17,11 @@ public class Pays {
     public String getNom() { return nom; }
 
     @CheckForNull
-    public boolean equals(Object obj) { return this.no == ((Pays)obj).no; }
+    public boolean equals(Object obj) {
+        if (obj != null) {
+            return this.no == ((Pays) obj).no;
+        }
+        return false;
+    }
     public String toString() { return nom; }
 }

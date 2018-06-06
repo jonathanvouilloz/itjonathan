@@ -14,7 +14,9 @@ public class Sport {
 
     @CheckForNull
     public boolean equals(Object obj) {
-        return this.no == ((Sport)obj).no;
+        if (obj != null) {
+            return this.no == ((Sport) obj).no;
+        }return false;
     }
     public String toString() { return nom; }
 
