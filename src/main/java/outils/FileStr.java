@@ -32,6 +32,7 @@ public class FileStr
             int j = localStringTokenizer.countTokens();
             String[] arrayOfString = new String[j];
             for (int k = 0; k < j; k++) arrayOfString[k] = localStringTokenizer.nextToken();
+            localBufferedInputStream.close();
             return arrayOfString;
         } catch (FileNotFoundException localFileNotFoundException) {
             localFileNotFoundException.printStackTrace();return null;

@@ -1,5 +1,7 @@
 package domaine;
 
+import javax.annotation.CheckForNull;
+
 public class Athlete {
     private int no;
     private String prenom;
@@ -14,7 +16,8 @@ public class Athlete {
     public String getNom() { return nom; }
     public Pays getPays() { return pays; }
     public Sport getSport() { return sport; }
-    
+
+    @CheckForNull
     public boolean equals(Object obj) { return this.no == ((Athlete)obj).no; }
     public String toString() { return prenom+" "+nom; }
 }

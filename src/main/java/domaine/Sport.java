@@ -1,6 +1,8 @@
 package domaine;
 
 
+import javax.annotation.CheckForNull;
+
 public class Sport {
     private int no;
     private String nom;
@@ -9,7 +11,8 @@ public class Sport {
     public Sport(int no) { this(no, ""); }
 
     public String getNom() { return nom; }
-    
+
+    @CheckForNull
     public boolean equals(Object obj) {
         return this.no == ((Sport)obj).no;
     }
